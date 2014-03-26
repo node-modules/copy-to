@@ -1,18 +1,4 @@
-copy-to
-=======
-
-copy an object's properties to another one
-
-## Install
-
-```
-npm install copy-to
-```
-
-## Usage
-
-```js
-var copy = require('copy-to');
+var copy = require('./');
 
 var src = {
   _name: 'foo',
@@ -31,9 +17,5 @@ var des = {
   _name: 'bar'
 };
 
-copy(src).to(des);
 copy(src).toCover(des);
-```
-
-## License
-MIT
+console.log(des);
