@@ -1,5 +1,11 @@
 var copy = require('./');
 
+
+/**
+ * copy(src).to(des);
+ * copy(src).toCover(des);
+ */
+
 var src = {
   _name: 'foo',
   set name(val) {
@@ -18,4 +24,27 @@ var des = {
 };
 
 copy(src).toCover(des);
-console.log(des);
+
+
+/**
+ * copy(src).and(other).to(des);
+ */
+
+var a = {
+  name: 'foo',
+  show: function () {
+    return this.name;
+  }
+};
+
+var b = {
+  name: 'bar',
+  age: 18,
+  showAge: function () {
+    return this.age;
+  }
+};
+
+var c = {};
+
+copy(a).and(b).to(c);

@@ -11,6 +11,16 @@ npm install copy-to
 
 ## Usage
 
+```
+copy(src).to(des);
+copy(src).toCover(des);
+copy(src).and(other).to(des);
+copy(src).and(other).toCover(des);
+copy(src).and(second).and(third).to(des);
+```
+
+## Example
+
 ```js
 var copy = require('copy-to');
 
