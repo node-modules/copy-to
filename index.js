@@ -78,6 +78,8 @@ Copy.prototype.toCover = function(to) {
   }
 };
 
+Copy.prototype.override = Copy.prototype.toCover;
+
 /**
  * append another object to src
  * @param {Obj} obj

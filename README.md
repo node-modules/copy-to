@@ -14,6 +14,7 @@ npm install copy-to
 ```
 copy(src).to(des);
 copy(src).toCover(des);
+copy(src).override(des);
 copy(src).and(other).to(des);
 copy(src).and(other).toCover(des);
 copy(src).and(second).and(third).to(des);
