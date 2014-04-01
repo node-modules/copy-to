@@ -1,6 +1,6 @@
 {
   "name": "copy-to",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "copy an object's properties to another object",
   "main": "index.js",
   "files": ["index.js"],
