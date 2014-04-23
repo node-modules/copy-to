@@ -48,3 +48,7 @@ var b = {
 var c = {};
 
 copy(a).and(b).to(c);
+console.log('c: %j', c);
+
+var d = copy(a).and(b).to();
+console.log('d: %j', d);

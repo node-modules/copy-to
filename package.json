@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dead-horse/copy-to.git"
+    "url": "git://github.com/node-modules/copy-to.git"
   },
   "keywords": [
     "copy",
@@ -21,7 +21,7 @@
   "author": "dead_horse <dead_horse@qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dead-horse/copy-to/issues"
+    "url": "https://github.com/node-modules/copy-to/issues"
   },
-  "homepage": "https://github.com/dead-horse/copy-to"
+  "homepage": "https://github.com/node-modules/copy-to"
 }

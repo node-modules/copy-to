@@ -20,7 +20,7 @@
 
 module.exports = function (src) {
   return new Copy(src);
-}
+};
 
 /**
  * Copy
@@ -29,7 +29,7 @@ module.exports = function (src) {
 
 function Copy(src) {
   this.src = src;
-};
+}
 
 /**
  * copy src to target,
@@ -40,6 +40,7 @@ function Copy(src) {
  */
 
 Copy.prototype.to = function(to) {
+  to = to || {};
   for (var key in this.src) {
     if (!notDefiend(to, key)) {
       continue;
@@ -53,6 +54,7 @@ Copy.prototype.to = function(to) {
       to[key] = this.src[key];
     }
   }
+  return to;
 };
 
 /**
@@ -85,6 +87,7 @@ Copy.prototype.override = Copy.prototype.toCover;
  * @param {Obj} obj
  * @return {Copy}
  */
+
 Copy.prototype.and = function (obj) {
   var src = {};
   this.to(src);
