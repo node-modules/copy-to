@@ -1,4 +1,12 @@
 
+n.n.n / 2014-04-24
+==================
+
+  * refactor, add .travis
+  * Merge pull request #2 from coderhaoxin/add-pick
+  * add pick
+  * add test
+
 1.0.0 / 2014-04-24
 ==================
 
