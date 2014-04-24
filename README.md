@@ -1,7 +1,9 @@
 copy-to
 =======
 
-copy an object's properties to another one
+[![Build Status](https://travis-ci.org/node-modules/copy-to.svg?branch=master)](https://travis-ci.org/node-modules/copy-to)
+
+copy an object's properties to another one, include propertiy, getter and setter.
 
 ## Install
 

@@ -43,8 +43,10 @@ function Copy(src) {
  * @api: public
  */
 
-Copy.prototype.pick = function() {
-  var keys = slice.call(arguments);
+Copy.prototype.pick = function(keys) {
+  if (!Array.isArray(keys)) {
+    keys = slice.call(arguments);
+  }
   if (keys.length) {
     this.keys = keys;
   }
@@ -63,7 +65,7 @@ Copy.prototype.to = function(to) {
   to = to || {};
   var keys = this.keys || Object.keys(this.src);
 
-  for (var i = 0, len = keys.length; i < len; i++) {
+  for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
     if (!notDefiend(to, key)) {
       continue;
@@ -91,8 +93,9 @@ Copy.prototype.to = function(to) {
 Copy.prototype.toCover = function(to) {
   var keys = this.keys || Object.keys(this.src);
 
-  for (var i = 0, len = keys.length; i < len; i++) {
-    var key = keys[i];    delete to[key];
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i];
+    delete to[key];
     var getter = this.src.__lookupGetter__(key);
     var setter = this.src.__lookupSetter__(key);
     if (getter) to.__defineGetter__(key, getter);

@@ -1,10 +1,10 @@
 TESTS = test/*.js
 REPORTER = spec
-TIMEOUT = 20
+TIMEOUT = 1000
 MOCHA_OPTS =
 
 install:
-	@npm install --registry=http://r.cnpmjs.org --disturl=http://dist.cnpmjs.org
+	@npm install --registry=http://registry.npm.taobao.org --disturl=http://dist.cnpmjs.org
 
 test: install
 	@NODE_ENV=test ./node_modules/mocha/bin/mocha \
