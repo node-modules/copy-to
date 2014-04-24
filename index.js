@@ -7,6 +7,12 @@
 'use strict';
 
 /**
+ * slice() reference.
+ */
+
+var slice = Array.prototype.slice;
+
+/**
  * Expose copy
  *
  * ```
@@ -32,6 +38,20 @@ function Copy(src) {
 }
 
 /**
+ * pick keys in src
+ *
+ * @api: public
+ */
+
+Copy.prototype.pick = function() {
+  var keys = slice.call(arguments);
+  if (keys.length) {
+    this.keys = keys;
+  }
+  return this;
+};
+
+/**
  * copy src to target,
  * do not cover any property target has
  * @param {Object} to
@@ -41,7 +61,10 @@ function Copy(src) {
 
 Copy.prototype.to = function(to) {
   to = to || {};
-  for (var key in this.src) {
+  var keys = this.keys || Object.keys(this.src);
+
+  for (var i = 0, len = keys.length; i < len; i++) {
+    var key = keys[i];
     if (!notDefiend(to, key)) {
       continue;
     }
@@ -66,9 +89,10 @@ Copy.prototype.to = function(to) {
  */
 
 Copy.prototype.toCover = function(to) {
-  for (var key in this.src) {
-    delete to[key];
+  var keys = this.keys || Object.keys(this.src);
 
+  for (var i = 0, len = keys.length; i < len; i++) {
+    var key = keys[i];    delete to[key];
     var getter = this.src.__lookupGetter__(key);
     var setter = this.src.__lookupSetter__(key);
     if (getter) to.__defineGetter__(key, getter);

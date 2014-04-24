@@ -15,9 +15,18 @@ npm install copy-to
 copy(src).to(des);
 copy(src).toCover(des);
 copy(src).override(des);
+
+copy(src).pick('proName1', 'proName2').to(des);
+copy(src).pick('proName1', 'proName2').toCover(des);
+copy(src).pick('proName1', 'proName2').override(des);
+
 copy(src).and(other).to(des);
 copy(src).and(other).toCover(des);
 copy(src).and(second).and(third).to(des);
+
+copy(src).and(other).pick('proName1', 'proName2').to(des);
+copy(src).and(other).pick('proName1', 'proName2').toCover(des);
+copy(src).and(second).and(third).pick('proName1', 'proName2').to(des);
 ```
 
 ## Example
@@ -44,6 +53,8 @@ var des = {
 
 copy(src).to(des);
 copy(src).toCover(des);
+copy(src).pick('_name', 'name').to(des);
+copy(src).pick('_name', 'name').toCover(des);
 ```
 
 ## License
