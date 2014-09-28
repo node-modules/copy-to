@@ -67,7 +67,7 @@ Copy.prototype.to = function(to) {
 
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
-    if (!notDefiend(to, key)) {
+    if (!notDefined(to, key)) {
       continue;
     }
     var getter = this.src.__lookupGetter__(key);
@@ -84,7 +84,7 @@ Copy.prototype.to = function(to) {
 
 /**
  * copy src to target,
- * do not cover any property target has
+ * override any property target has
  * @param {Object} to
  *
  * @api: public
@@ -132,7 +132,7 @@ Copy.prototype.and = function (obj) {
  * @return {Boolean}
  */
 
-function notDefiend(obj, key) {
+function notDefined(obj, key) {
   return obj[key] === undefined
     && obj.__lookupGetter__(key) === undefined
     && obj.__lookupSetter__(key) === undefined;
