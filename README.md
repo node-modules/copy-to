@@ -13,7 +13,7 @@ npm install copy-to
 
 ## Usage
 
-```
+```js
 copy(src).to(des);
 copy(src).toCover(des);
 copy(src).override(des);
@@ -29,6 +29,12 @@ copy(src).and(second).and(third).to(des);
 copy(src).and(other).pick('proName1', 'proName2').to(des);
 copy(src).and(other).pick('proName1', 'proName2').toCover(des);
 copy(src).and(second).and(third).pick('proName1', 'proName2').to(des);
+```
+
+It won't copy access(getter / setter) by default, if you want to copy them, please use:
+
+```js
+copy(src).withAccess().and(other).to(des);
 ```
 
 ## Example
