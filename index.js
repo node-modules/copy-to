@@ -33,9 +33,21 @@ module.exports = function (src) {
  * @param {Object} src
  */
 
-function Copy(src) {
+function Copy(src, access) {
   this.src = src;
+  this.copyAccess = access;
 }
+
+/**
+ * copy properties include getter and setter
+ * @param {[type]} val [description]
+ * @return {[type]} [description]
+ */
+
+Copy.prototype.access = function (val) {
+  this.copyAccess = val !== false;
+  return this;
+};
 
 /**
  * pick keys in src
@@ -65,11 +77,17 @@ Copy.prototype.to = function(to) {
   to = to || {};
   var keys = this.keys || Object.keys(this.src);
 
+  if (!this.copyAccess) {
+    for (var i = 0; i < keys.length; i++) {
+      if (to[key] === undefined) continue;
+      to[key] = this.src[key];
+    }
+    return to;
+  }
+
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
-    if (!notDefiend(to, key)) {
-      continue;
-    }
+    if (!notDefiend(to, key)) continue;
     var getter = this.src.__lookupGetter__(key);
     var setter = this.src.__lookupSetter__(key);
     if (getter) to.__defineGetter__(key, getter);
