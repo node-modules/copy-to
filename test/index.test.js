@@ -20,7 +20,7 @@ describe('index.test.js', function() {
     info: 'copy'
   };
 
-  it('copy to', function() {
+  it('copy to without access', function() {
     var des = {
       _name: 'bar'
     };
@@ -28,7 +28,20 @@ describe('index.test.js', function() {
     copy(src).to(des);
 
     des._name.should.equal('bar');
+    should.not.exist(des.__lookupGetter__('name'));
+    des.show().should.equal('bar');
+  });
+
+  it('copy to', function() {
+    var des = {
+      _name: 'bar'
+    };
+
+    copy(src).withAccess().to(des);
+
+    des._name.should.equal('bar');
     des.name.should.equal('bar');
+    des.__lookupGetter__('name').should.ok;
     des.show().should.equal('bar');
   });
 
@@ -37,7 +50,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(src).toCover(des);
+    copy(src).withAccess().toCover(des);
 
     des._name.should.equal('foo');
     des.name.should.equal('foo');
@@ -49,7 +62,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(src).and(sub).to(des);
+    copy(src).withAccess().and(sub).to(des);
 
     des._name.should.equal('bar');
     des.name.should.equal('bar');
@@ -62,7 +75,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(src).and(sub).toCover(des);
+    copy(src).withAccess().and(sub).toCover(des);
 
     des._name.should.equal('foo');
     des.name.should.equal('foo');
@@ -102,7 +115,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(pickSrc).pick('_name', 'name', 'show', '_age', 'age').to(des);
+    copy(pickSrc).withAccess().pick('_name', 'name', 'show', '_age', 'age').to(des);
 
     des._name.should.equal('bar');
     des.name.should.equal('bar');
@@ -117,7 +130,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(pickSrc).pick('_name', 'name', 'show', '_age', 'age').toCover(des);
+    copy(pickSrc).withAccess().pick('_name', 'name', 'show', '_age', 'age').toCover(des);
 
     des._name.should.equal('foo');
     des.name.should.equal('foo');
@@ -132,7 +145,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(pickSrc).and(sub).pick('_name', 'name', 'show', '_age', 'age', 'info').to(des);
+    copy(pickSrc).withAccess().and(sub).pick('_name', 'name', 'show', '_age', 'age', 'info').to(des);
 
     des._name.should.equal('bar');
     des.name.should.equal('bar');
@@ -148,7 +161,7 @@ describe('index.test.js', function() {
       _name: 'bar'
     };
 
-    copy(pickSrc).and(sub).pick('_name', 'name', 'show', '_age', 'age', 'info').toCover(des);
+    copy(pickSrc).withAccess().and(sub).pick('_name', 'name', 'show', '_age', 'age', 'info').toCover(des);
 
     des._name.should.equal('foo');
     des.name.should.equal('foo');

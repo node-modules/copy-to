@@ -33,9 +33,9 @@ module.exports = function (src) {
  * @param {Object} src
  */
 
-function Copy(src, access) {
+function Copy(src, w) {
   this.src = src;
-  this.copyAccess = access;
+  this._withAccess = w;
 }
 
 /**
@@ -44,8 +44,8 @@ function Copy(src, access) {
  * @return {[type]} [description]
  */
 
-Copy.prototype.access = function (val) {
-  this.copyAccess = val !== false;
+Copy.prototype.withAccess = function (w) {
+  this._withAccess = w !== false;
   return this;
 };
 
@@ -77,9 +77,10 @@ Copy.prototype.to = function(to) {
   to = to || {};
   var keys = this.keys || Object.keys(this.src);
 
-  if (!this.copyAccess) {
+  if (!this._withAccess) {
     for (var i = 0; i < keys.length; i++) {
-      if (to[key] === undefined) continue;
+      key = keys[i];
+      if (to[key] !== undefined) continue;
       to[key] = this.src[key];
     }
     return to;
