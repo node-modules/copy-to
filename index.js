@@ -103,7 +103,7 @@ Copy.prototype.to = function(to) {
 
 /**
  * copy src to target,
- * do not cover any property target has
+ * override any property target has
  * @param {Object} to
  *
  * @api: public
@@ -151,7 +151,7 @@ Copy.prototype.and = function (obj) {
  * @return {Boolean}
  */
 
-function notDefiend(obj, key) {
+function notDefined(obj, key) {
   return obj[key] === undefined
     && obj.__lookupGetter__(key) === undefined
     && obj.__lookupSetter__(key) === undefined;
