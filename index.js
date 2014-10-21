@@ -88,7 +88,7 @@ Copy.prototype.to = function(to) {
 
   for (var i = 0; i < keys.length; i++) {
     var key = keys[i];
-    if (!notDefiend(to, key)) continue;
+    if (!notDefined(to, key)) continue;
     var getter = this.src.__lookupGetter__(key);
     var setter = this.src.__lookupSetter__(key);
     if (getter) to.__defineGetter__(key, getter);
