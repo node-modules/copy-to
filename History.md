@@ -1,4 +1,11 @@
 
+n.n.n / 2014-10-22
+==================
+
+  * add withAccess in readme
+  * rename to withAccess
+  * do not copy access by default
+
 n.n.n / 2014-04-24
 ==================
 
