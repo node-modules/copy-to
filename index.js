@@ -24,18 +24,19 @@ var slice = Array.prototype.slice;
  * @return {Copy}
  */
 
-module.exports = function (src) {
-  return new Copy(src);
-};
+module.exports = Copy;
+
 
 /**
  * Copy
  * @param {Object} src
+ * @param {Boolean} withAccess
  */
 
-function Copy(src, w) {
+function Copy(src, withAccess) {
+  if (!(this instanceof Copy)) return new Copy(src, withAccess);
   this.src = src;
-  this._withAccess = w;
+  this._withAccess = withAccess;
 }
 
 /**
@@ -75,6 +76,8 @@ Copy.prototype.pick = function(keys) {
 
 Copy.prototype.to = function(to) {
   to = to || {};
+
+  if (!this.src) return to;
   var keys = this.keys || Object.keys(this.src);
 
   if (!this._withAccess) {

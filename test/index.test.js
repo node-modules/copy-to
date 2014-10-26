@@ -171,4 +171,8 @@ describe('index.test.js', function() {
     should.not.exist(des._sex);
     des.info.should.equal('copy');
   });
+
+  it('should copye undefined ok', function () {
+    copy().to().should.eql({});
+  })
 });
