@@ -1,4 +1,10 @@
 
+n.n.n / 2014-10-26
+==================
+
+  * fix copy undefined
+  * fix notDefined method name
+
 n.n.n / 2014-10-22
 ==================
 
