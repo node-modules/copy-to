@@ -22,6 +22,10 @@ copy(src).pick('proName1', 'proName2').to(des);
 copy(src).pick('proName1', 'proName2').toCover(des);
 copy(src).pick('proName1', 'proName2').override(des);
 
+copy(src).omit('proName3', 'proName4').to(des);
+copy(src).omit('proName3', 'proName4').toCover(des);
+copy(src).omit('proName3', 'proName4').override(des);
+
 copy(src).and(other).to(des);
 copy(src).and(other).toCover(des);
 copy(src).and(second).and(third).to(des);
@@ -29,6 +33,10 @@ copy(src).and(second).and(third).to(des);
 copy(src).and(other).pick('proName1', 'proName2').to(des);
 copy(src).and(other).pick('proName1', 'proName2').toCover(des);
 copy(src).and(second).and(third).pick('proName1', 'proName2').to(des);
+
+copy(src).and(other).omit('proName3', 'proName4').to(des);
+copy(src).and(other).omit('proName3', 'proName4').toCover(des);
+copy(src).and(second).and(third).omit('proName3', 'proName4').to(des);
 ```
 
 It won't copy access(getter / setter) by default, if you want to copy them, please use:

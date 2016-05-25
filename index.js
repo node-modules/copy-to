@@ -67,6 +67,25 @@ Copy.prototype.pick = function(keys) {
 };
 
 /**
+ * omit keys in src
+ *
+ * @api: public
+ */
+
+Copy.prototype.omit = function(keys) {
+  if (!Array.isArray(keys)) {
+    keys = slice.call(arguments);
+  }
+  if (keys.length) {
+    var originalKeys = Object.keys(this.src);
+    this.keys = originalKeys.filter(function(key) {
+      return keys.indexOf(key) === -1;
+    });
+  }
+  return this;
+};
+
+/**
  * copy src to target,
  * do not cover any property target has
  * @param {Object} to
