@@ -82,7 +82,7 @@ Copy.prototype.to = function(to) {
 
   if (!this._withAccess) {
     for (var i = 0; i < keys.length; i++) {
-      key = keys[i];
+      var key = keys[i];
       if (to[key] !== undefined) continue;
       to[key] = this.src[key];
     }
